@@ -15,7 +15,7 @@ public class PatrullajePlataforma : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+//probando
     private void FixedUpdate()
     {
         RaycastHit2D informacionSuelo = Physics2D.Raycast(controllerSuelo.position, Vector2.down, distancia);

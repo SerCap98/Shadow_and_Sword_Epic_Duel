@@ -8,7 +8,8 @@ public class Bandit : MonoBehaviour,IDamageable
     [SerializeField] float delay = 5.0f;
     [SerializeField] float m_jumpForce = 7.5f;
     [SerializeField] string platformTagToDescend = "Descendable";
-    public EdgeCollider2D swordCollider;
+    [SerializeField] float invulnerabilityDuration = 5.0f; 
+
 
     [Header("Controles")]
     [SerializeField] KeyCode attackKey = KeyCode.Mouse0;
@@ -17,7 +18,12 @@ public class Bandit : MonoBehaviour,IDamageable
     [SerializeField] KeyCode moveRightKey = KeyCode.RightArrow;
     [SerializeField] KeyCode descendKey = KeyCode.RightArrow;
     [SerializeField] bool m_combatIdle = false;
-    // Variables para gestionar las colisiones
+    [SerializeField] KeyCode invulnerabilityKey = KeyCode.LeftControl;
+    
+
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    public EdgeCollider2D swordCollider;
     private bool isDescending = false;
     private int originalLayer;
     private int descendibleLayer;
@@ -29,8 +35,9 @@ public class Bandit : MonoBehaviour,IDamageable
     private Sensor_Bandit m_groundSensor;
     private bool m_grounded = false;
     private bool m_isDead = false;
+    private bool isInvulnerable = false; 
+ 
 
-    // Use this for initialization
     void Start()
     {
 
@@ -41,12 +48,17 @@ public class Bandit : MonoBehaviour,IDamageable
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
         originalLayer = LayerMask.NameToLayer("Bandit");
         descendibleLayer = LayerMask.NameToLayer("Descendible");
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
+  
+
         groundCollider = m_groundSensor.GetCollider();
         // Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
@@ -98,6 +110,10 @@ public class Bandit : MonoBehaviour,IDamageable
             m_animator.SetTrigger("Attack");
         }
 
+        if (Input.GetKeyDown(invulnerabilityKey) && !isInvulnerable)
+        {
+            StartCoroutine(BecomeInvulnerable());
+        }
 
         // Jump
         else if (Input.GetKeyDown(jumpKey) && m_grounded && !m_isAttacked && !m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
@@ -154,24 +170,44 @@ public class Bandit : MonoBehaviour,IDamageable
     public void TakeDamageAndKnockback(Vector3 attackDirection, GameObject attacker)
     {
 
-                       
+
         if (attacker.CompareTag("Heroe"))
         {
-            isAttacking = false;
-            m_isAttacked = true;
-            Vector2 knockbackForce = new Vector2(-attackDirection.x * 5.0f, 3.0f);
-            m_body2d.velocity = knockbackForce;
-            m_animator.SetTrigger("Hurt");
+            if (!isInvulnerable)
+            {
+
+                isAttacking = false;
+                m_isAttacked = true;
+                Vector2 knockbackForce = new Vector2(-attackDirection.x * 5.0f, 3.0f);
+                m_body2d.velocity = knockbackForce;
+                m_animator.SetTrigger("Hurt");
+            }
         }
+    }
 
 
+
+    
+    IEnumerator BecomeInvulnerable()
+    {
+        isInvulnerable = true;
+        spriteRenderer.color = Color.black; // Cambia el color a negro
+
+        yield return new WaitForSeconds(invulnerabilityDuration);
+
+        spriteRenderer.color = originalColor; // Restaura el color original
+        isInvulnerable = false;
     }
 
     public void EnterAttackCollision()
     {
 
-        swordCollider.enabled = true; // Desactiva el trigger al golpear al enemigo
-                                      // Realiza otras acciones relacionadas con la colisión aquí si es necesario
+
+        swordCollider.enabled = true;
+        spriteRenderer.color = originalColor;
+        isInvulnerable = false;
+        StopCoroutine(BecomeInvulnerable());// Desactiva el trigger al golpear al enemigo
+                                        // Realiza otras acciones relacionadas con la colisión aquí si es necesario
     }
     public void ExitAttackCollision()
     {

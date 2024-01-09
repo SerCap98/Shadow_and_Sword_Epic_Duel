@@ -28837,6 +28837,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeavyBandit
       objectReference: {fileID: 0}
+    - target: {fileID: 3023079718491182391, guid: ba8c9efc3ff888d4d81ba18c585d346b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023079718491182391, guid: ba8c9efc3ff888d4d81ba18c585d346b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023079718491182391, guid: ba8c9efc3ff888d4d81ba18c585d346b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4328877313457826236, guid: ba8c9efc3ff888d4d81ba18c585d346b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.69
@@ -28876,6 +28888,10 @@ PrefabInstance:
     - target: {fileID: 4328877313457826236, guid: ba8c9efc3ff888d4d81ba18c585d346b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552325454197537281, guid: ba8c9efc3ff888d4d81ba18c585d346b, type: 3}
+      propertyPath: invulnerabilityKey
+      value: 306
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31916,11 +31932,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8975055081039954815, guid: 21eb8e35b2c938a48afa9d6cee6a1c78, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.63
+      value: -28.649
       objectReference: {fileID: 0}
     - target: {fileID: 8975055081039954815, guid: 21eb8e35b2c938a48afa9d6cee6a1c78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.27
+      value: -2.261
       objectReference: {fileID: 0}
     - target: {fileID: 8975055081039954815, guid: 21eb8e35b2c938a48afa9d6cee6a1c78, type: 3}
       propertyPath: m_LocalPosition.z

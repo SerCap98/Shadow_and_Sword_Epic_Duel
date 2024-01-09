@@ -24,7 +24,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode attackKey = KeyCode.Mouse0;
     [SerializeField] KeyCode blockKey = KeyCode.Mouse1;
-    [SerializeField] KeyCode rollKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode rollKey = KeyCode.LeftControl;
 
     // Variables para gestionar las colisiones
     private bool isDescending = false;

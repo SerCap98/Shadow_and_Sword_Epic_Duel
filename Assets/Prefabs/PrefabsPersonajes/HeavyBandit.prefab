@@ -362,10 +362,12 @@ MonoBehaviour:
   delay: 3
   m_jumpForce: 7.5
   platformTagToDescend: Platform
-  swordCollider: {fileID: 1065213968670817046}
+  invulnerabilityDuration: 5
   attackKey: 32
   jumpKey: 119
   moveLeftKey: 97
   moveRightKey: 100
   descendKey: 115
   m_combatIdle: 0
+  invulnerabilityKey: 306
+  swordCollider: {fileID: 1065213968670817046}

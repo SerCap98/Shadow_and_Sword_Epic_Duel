@@ -13904,6 +13904,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7921076258788708257, guid: 4d0ea86cf0ef88c4fa3ae46ee54d15d1, type: 3}
   m_PrefabInstance: {fileID: 1867919846}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1869564460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8682034317405544798, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
+  m_PrefabInstance: {fileID: 1890133982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1869662455
 GameObject:
   m_ObjectHideFlags: 0
@@ -14082,10 +14087,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1869662456}
     m_Modifications:
+    - target: {fileID: 2921381771620598087, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
+      propertyPath: Hit
+      value: 
+      objectReference: {fileID: 1869564460}
+    - target: {fileID: 2921381771620598087, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1954127890}
     - target: {fileID: 7036260199945607356, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.058
       objectReference: {fileID: 0}
+    - target: {fileID: 7524137787218312386, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1954127890}
     - target: {fileID: 8314667069776878966, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14136,11 +14153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8664522155542086928, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1284409147928874792, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 6799893501114100513, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711d9cb02f6d7be439a7eef9eb073ffd, type: 3}
@@ -15254,6 +15271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 515080209307620290, guid: 01547327e01e6bb42badc1d227700bdc, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 531345916}
     - target: {fileID: 798398883150911878, guid: 01547327e01e6bb42badc1d227700bdc, type: 3}
       propertyPath: heroCameraTransform
       value: 

@@ -140,9 +140,9 @@ public class HeroKnight : MonoBehaviour,IDamageable
                     m_facingDirection = 1;
 
                     // Mover el collider hacia la derecha multiplicando su posición actual por la escala X
-                    Vector2 colliderPosition = swordCollider.transform.localPosition;
-                    colliderPosition.x = Mathf.Abs(colliderPosition.x);
-                    swordCollider.transform.localPosition = colliderPosition;
+                    //Vector2 colliderPosition = swordCollider.transform.localPosition;
+                    //colliderPosition.x = Mathf.Abs(colliderPosition.x);
+                    //swordCollider.transform.localPosition = colliderPosition;
                 }
 
                 // Mueve solo si no estás rodando

@@ -49,7 +49,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
     private bool m_isActionLocked = false;
     private bool isAttacking = false;
 
-    public int m_facingDirection = 1;
+    private int m_facingDirection = 1;
     private int m_currentAttack = 0;
     private float m_timeSinceAttack = 0.0f;
     private float m_delayToIdle = 0.0f;
@@ -357,7 +357,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
         {
             
             // Comprobar si el atacante es un bandido
-            if (attacker != null && attacker.CompareTag("Bandido"))
+            if (attacker.CompareTag("Bandido"))
             {
                 m_isAttacked = true;
                 // Aplicar fuerza de empuje si el atacante es un bandido

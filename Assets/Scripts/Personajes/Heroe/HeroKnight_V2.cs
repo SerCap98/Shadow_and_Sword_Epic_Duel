@@ -2,6 +2,7 @@
 using System.Collections;
 using Cainos.PixelArtPlatformer_VillageProps; 
 using System.Collections.Generic;
+using System;
 
 public class HeroKnight : MonoBehaviour,IDamageable
 {
@@ -56,6 +57,8 @@ public class HeroKnight : MonoBehaviour,IDamageable
     private float m_rollCurrentTime;
     private Collider2D groundCollider;
     string currentAnimation;
+
+    [SerializeField] private GameObject ganadorB;
 
     // Use this for initialization
     void Start()
@@ -199,6 +202,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
         if (PlayerStats.Instance.Health <= 0)
         {
             TriggerDeathAnimation();
+            ganadorB.SetActive(true);
         }
 
 

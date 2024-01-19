@@ -207,8 +207,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  ganadorB: {fileID: 0}
 --- !u!1 &5103292014828546810
 GameObject:
   m_ObjectHideFlags: 0

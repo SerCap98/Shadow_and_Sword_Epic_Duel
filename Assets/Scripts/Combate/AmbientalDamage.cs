@@ -25,6 +25,7 @@ public class AmbientalDamage : MonoBehaviour, IDamageable
 
                 Vector3 attackDirection = transform.position - col.transform.position;
                 damageable.TakeDamageAndKnockback(attackDirection.normalized, gameObject);
+                Debug.Log("HOLAAA");
 
             }
         

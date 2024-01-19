@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Final : MonoBehaviour
+public class FinalLevel : MonoBehaviour
 {
 
-    [SerializeField] private GameObject ganadorH;
-
     private void OnTriggerEnter2D(Collider2D collision)
-    { 
-
+    {
         if (collision.CompareTag("Player"))
-        {
-            ganadorH.SetActive(true);
+        {        
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-
 
 }

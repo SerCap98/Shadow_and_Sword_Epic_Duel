@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 467821229918662491}
   - component: {fileID: 7587289196394021213}
   - component: {fileID: 6482585507685393342}
+  - component: {fileID: 5314735459714172322}
   - component: {fileID: 8749918445585146222}
   m_Layer: 6
   m_Name: HeroKnight
@@ -36,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 6871065554570678755}
   - {fileID: 7126211623594408923}
+  - {fileID: 1991130215032048420}
   - {fileID: 498265950622726579}
   - {fileID: 4849798008162427336}
   m_Father: {fileID: 0}
@@ -175,6 +177,23 @@ CapsuleCollider2D:
   m_Offset: {x: -0.04100418, y: 0.68888044}
   m_Size: {x: 0.7522507, y: 1.2826719}
   m_Direction: 0
+--- !u!114 &5314735459714172322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3578373390901851985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c386a6cdd6dc54ab6d49e8c1b63ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSensor: {fileID: 2086807254764781045}
+  heroKnight: {fileID: 8749918445585146222}
+  WallSensor_R1: {fileID: 6941150213087887695}
+  WallSensor_L1: {fileID: 3792244729342087232}
+  teleportTime: 5
 --- !u!114 &8749918445585146222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,10 +222,12 @@ MonoBehaviour:
   attackKey: 323
   blockKey: 324
   rollKey: 305
+  invulnerabilityDuration: 1
   cofres:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_facingDirection: 1
   ganadorB: {fileID: 0}
 --- !u!1 &5103292014828546810
 GameObject:
@@ -283,6 +304,96 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5103292014828546810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4eda7689babad438ee49049a0147f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6282025585516944825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1991130215032048420}
+  - component: {fileID: 3956214453029295525}
+  - component: {fileID: 2086807254764781045}
+  m_Layer: 0
+  m_Name: FallSensor
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1991130215032048420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282025585516944825}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.031, y: -0.105, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3010302183259229318}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &3956214453029295525
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282025585516944825}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.42595673, y: 0.22286582}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.18574524, y: 0.20300817}
+  m_EdgeRadius: 0
+--- !u!114 &2086807254764781045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282025585516944825}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f4eda7689babad438ee49049a0147f6, type: 3}

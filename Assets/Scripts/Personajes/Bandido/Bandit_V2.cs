@@ -19,8 +19,8 @@ public class Bandit : MonoBehaviour,IDamageable
     [SerializeField] KeyCode descendKey = KeyCode.RightArrow;
     [SerializeField] bool m_combatIdle = false;
     [SerializeField] KeyCode invulnerabilityKey = KeyCode.LeftControl;
-    
 
+    [HideInInspector] public float lastInputX;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     public EdgeCollider2D swordCollider;
@@ -33,6 +33,8 @@ public class Bandit : MonoBehaviour,IDamageable
     private Animator m_animator;
     private Rigidbody2D m_body2d;
     private Sensor_Bandit m_groundSensor;
+    private Sensor_Wall wall_Sensor_r;
+    private Sensor_Wall wall_Sensor_l;
     private bool m_grounded = false;
     private bool m_isDead = false;
     private bool isInvulnerable = false; 
@@ -46,6 +48,10 @@ public class Bandit : MonoBehaviour,IDamageable
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
+        wall_Sensor_r = transform.Find("Sensor_Wall_R").GetComponent<Sensor_Wall>();
+        wall_Sensor_l = transform.Find("Sensor_Wall_L").GetComponent<Sensor_Wall>();
+
+
         originalLayer = LayerMask.NameToLayer("Bandit");
         descendibleLayer = LayerMask.NameToLayer("Descendible");
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -60,6 +66,7 @@ public class Bandit : MonoBehaviour,IDamageable
   
 
         groundCollider = m_groundSensor.GetCollider();
+
         // Check if character just landed on the ground
         if (!m_grounded && m_groundSensor.State())
         {
@@ -79,15 +86,17 @@ public class Bandit : MonoBehaviour,IDamageable
 
         // Verifica si no está ejecutando la animación de ataque antes de permitir el movimiento
     
-        if (!m_isAttacked) { 
+        if (!m_isAttacked && !isAttacking) { 
                 // Mueve hacia la izquierda si se presiona la flecha izquierda
-                if (Input.GetKey(moveLeftKey))
+                if (Input.GetKey(moveLeftKey)) {
                     inputX = -1.0f;
-
+                    lastInputX = inputX;
+                    }
                 // Mueve hacia la derecha si se presiona la flecha derecha
-                if (Input.GetKey(moveRightKey))
+                if (Input.GetKey(moveRightKey)) { 
                     inputX = 1.0f;
-
+                    lastInputX = inputX;
+                    }
                 // Swap direction of sprite depending on walk direction
                 if (inputX > 0)
                     transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
@@ -175,12 +184,13 @@ public class Bandit : MonoBehaviour,IDamageable
         {
             if (!isInvulnerable)
             {
-
+                if (!m_isAttacked) { 
                 isAttacking = false;
                 m_isAttacked = true;
                 Vector2 knockbackForce = new Vector2(-attackDirection.x * 5.0f, 3.0f);
                 m_body2d.velocity = knockbackForce;
                 m_animator.SetTrigger("Hurt");
+                }
             }
         }
     }

@@ -7,6 +7,8 @@ public class GroundMemoryTeleport : MonoBehaviour
 {
     public Sensor_HeroKnight groundSensor; // Referencia al sensor de suelo
     public HeroKnight heroKnight; // Referencia al script del personaje
+    public Sensor_HeroKnight WallSensor_R1;
+    public Sensor_HeroKnight WallSensor_L1;
     public float teleportTime = 10.0f; // Tiempo en segundos para teletransportar
 
     private Vector3 lastGroundedPosition;
@@ -21,8 +23,7 @@ public class GroundMemoryTeleport : MonoBehaviour
             float xAdjustment = heroKnight.m_facingDirection == 1 ? -1 : 1;
             lastGroundedPosition = heroKnight.transform.position + new Vector3(xAdjustment, 0, 0);
             timeSinceGrounded = 0;
-        }
-        else
+        }else if(!WallSensor_R1.State() && !WallSensor_L1.State())
         {
             // Incrementa el contador
             timeSinceGrounded += Time.deltaTime;

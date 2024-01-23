@@ -27,6 +27,10 @@ public class HeroKnight : MonoBehaviour,IDamageable
     [SerializeField] KeyCode blockKey = KeyCode.Mouse1;
     [SerializeField] KeyCode rollKey = KeyCode.LeftControl;
 
+    [Header("Invulnerabilidad")]
+    [SerializeField] private float invulnerabilityDuration = 1.0f;
+    private bool isInvulnerable = false;
+
     // Variables para gestionar las colisiones
     private bool isDescending = false;
     private int originalLayer;
@@ -77,7 +81,9 @@ public class HeroKnight : MonoBehaviour,IDamageable
     // Update is called once per frame
     void Update()
     {
-      
+        Debug.Log("m_isAttacked: " + m_isAttacked);
+        Debug.Log("m_isMoveLocked: " + m_isMoveLocked);
+
 
         groundCollider = m_groundSensor.GetCollider();
 
@@ -353,27 +359,33 @@ public class HeroKnight : MonoBehaviour,IDamageable
 
     public void TakeDamageAndKnockback(Vector3 attackDirection, GameObject attacker)
     {
-        if (!m_rolling && !m_isAttacked && (!m_blocking || Mathf.Sign(attackDirection.x) != Mathf.Sign(m_facingDirection)))
+        if (!isInvulnerable)
         {
-            
-            // Comprobar si el atacante es un bandido
-            if (attacker != null && attacker.CompareTag("Bandido"))
-            {
-                m_isAttacked = true;
-                // Aplicar fuerza de empuje si el atacante es un bandido
-                Vector2 knockbackForce = new Vector2(-attackDirection.x * 5.0f, 3.0f);
-                m_body2d.velocity = knockbackForce;
-                healthBarHUDTester.Hurt(1);
-            }else
+            if (!m_rolling && !m_isAttacked && (!m_blocking || Mathf.Sign(attackDirection.x) != Mathf.Sign(m_facingDirection)))
             {
 
-                healthBarHUDTester.Hurt(0.5f);
+                // Comprobar si el atacante es un bandido
+                if (attacker != null && attacker.CompareTag("Bandido"))
+                {
+                    m_isAttacked = true;
+                    // Aplicar fuerza de empuje si el atacante es un bandido
+                    Vector2 knockbackForce = new Vector2(-attackDirection.x * 5.0f, 3.0f);
+                    m_body2d.velocity = knockbackForce;
+                    healthBarHUDTester.Hurt(1);
+                }
+                else
+                {
+
+                    healthBarHUDTester.Hurt(0.5f);
+                }
+
+
+                m_animator.SetTrigger("Hurt");
+                StartCoroutine(BecomeInvulnerable());
+                m_isAttacked = false;
+                m_isActionLocked = false;
+                m_isMoveLocked = false;
             }
-
-
-            m_animator.SetTrigger("Hurt");
-            m_isActionLocked = false;
-            m_isMoveLocked = false;
         }
     }
     bool CheckWallSlideWithTag(string tag)
@@ -449,7 +461,17 @@ public class HeroKnight : MonoBehaviour,IDamageable
         
 
     }
+    private IEnumerator BecomeInvulnerable()
+    {
+        isInvulnerable = true;
+        // Opcional: Cambia el color o la apariencia del personaje para indicar invulnerabilidad
 
+
+        yield return new WaitForSeconds(invulnerabilityDuration);
+
+        isInvulnerable = false;
+
+    }
     void TriggerDeathAnimation()
     {
         // Asegúrate de que la animación de muerte solo se dispare una vez

@@ -227,6 +227,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   m_facingDirection: 1
   ganadorB: {fileID: 0}
 --- !u!1 &5103292014828546810

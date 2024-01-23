@@ -46,6 +46,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
     private bool m_isWallSliding = false;
     private bool m_isAttacked = false;
     private bool m_grounded = false;
+    private bool m_fall = false;
     private bool m_rolling = false;
     private bool m_blocking= false;
 
@@ -61,6 +62,9 @@ public class HeroKnight : MonoBehaviour,IDamageable
     private float m_rollCurrentTime;
     private Collider2D groundCollider;
     string currentAnimation;
+    private float timeSinceWallSlideStopped = 0f;
+    private float wallSlideBufferTime = 0.5f; // Retardo de 0.5 segundos
+
 
     [SerializeField] private GameObject ganadorB;
 
@@ -81,8 +85,8 @@ public class HeroKnight : MonoBehaviour,IDamageable
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("m_isAttacked: " + m_isAttacked);
-        Debug.Log("m_isMoveLocked: " + m_isMoveLocked);
+        //Debug.Log("m_isAttacked: " + m_isAttacked);
+        //Debug.Log("m_isMoveLocked: " + m_isMoveLocked);
 
 
         groundCollider = m_groundSensor.GetCollider();
@@ -103,6 +107,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
         {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
+        
         }
 
         //Check if character just started falling
@@ -111,11 +116,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
         }
-        if (!m_grounded && !m_groundSensor.State())
-        {
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
+ 
 
         // -- Handle input and movement --
         float inputX = 0.0f;
@@ -184,7 +185,18 @@ public class HeroKnight : MonoBehaviour,IDamageable
             }
         }
 
-
+        //Jump
+        if (Input.GetKeyDown(jumpKey))
+        {
+            if (m_grounded && !m_rolling && !m_isActionLocked && !m_isMoveLocked)
+            {
+                m_animator.SetTrigger("Jump");
+                m_grounded = false;
+                m_animator.SetBool("Grounded", m_grounded);
+                m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
+                m_groundSensor.Disable(0.2f);
+            }
+        }
         //Wall Slide
         m_isWallSliding = CheckWallSlideWithTag(platformTagToClimb);
 
@@ -192,8 +204,17 @@ public class HeroKnight : MonoBehaviour,IDamageable
         {
 
             m_animator.SetBool("WallSlide", m_isWallSliding);
-        }
+        
+            if (!m_isWallSliding && !m_groundSensor.State() && (currentAnimation=="HeroKnight_WallSlide"))
+            {
+                
 
+                m_animator.SetTrigger("Fall");
+
+            }
+       
+
+        }
         if (Input.GetKeyDown(jumpKey) && m_isWallSliding)
         {
 
@@ -271,18 +292,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
         }
 
 
-        //Jump
-        if (Input.GetKeyDown(jumpKey))
-        {
-            if (m_grounded && !m_rolling && !m_isActionLocked && !m_isMoveLocked)
-            {
-                m_animator.SetTrigger("Jump");
-                m_grounded = false;
-                m_animator.SetBool("Grounded", m_grounded);
-                m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
-                m_groundSensor.Disable(0.2f);
-            }
-        }
+
 
         //Run
         if (Mathf.Abs(inputX) > Mathf.Epsilon)
@@ -394,13 +404,14 @@ public class HeroKnight : MonoBehaviour,IDamageable
         bool leftWallDetected = m_wallSensorL1.State();
 
         if (rightWallDetected)
+
         {
             Collider2D rightCollider = Physics2D.OverlapArea(m_wallSensorR1.transform.position, m_wallSensorR1.transform.position);
 
             if (rightCollider != null && rightCollider.CompareTag(tag))
             {
                 // Objeto tageado detectado en el lado derecho
-
+             
                 return true;
             }
         }
@@ -412,7 +423,7 @@ public class HeroKnight : MonoBehaviour,IDamageable
             if (leftCollider != null && leftCollider.CompareTag(tag))
             {
                 // Objeto tageado detectado en el lado izquierdo
-
+               
                 return true;
             }
         }

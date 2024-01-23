@@ -46167,6 +46167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroKnight
       objectReference: {fileID: 0}
+    - target: {fileID: 5314735459714172322, guid: c3833be7deed83c4a948160b515a5845, type: 3}
+      propertyPath: teleportTime
+      value: 6.03
+      objectReference: {fileID: 0}
     - target: {fileID: 6482585507685393342, guid: c3833be7deed83c4a948160b515a5845, type: 3}
       propertyPath: m_Size.x
       value: 0.7522507
@@ -46188,14 +46192,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 436513542}
     - target: {fileID: 8749918445585146222, guid: c3833be7deed83c4a948160b515a5845, type: 3}
-      propertyPath: m_jumpForce
-      value: 7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749918445585146222, guid: c3833be7deed83c4a948160b515a5845, type: 3}
-      propertyPath: cofres.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749918445585146222, guid: c3833be7deed83c4a948160b515a5845, type: 3}
       propertyPath: healthBarHUDTester
       value: 
       objectReference: {fileID: 6195801945993372518}
@@ -46207,14 +46203,6 @@ PrefabInstance:
       propertyPath: cofres.Array.data[1]
       value: 
       objectReference: {fileID: 413441850}
-    - target: {fileID: 8749918445585146222, guid: c3833be7deed83c4a948160b515a5845, type: 3}
-      propertyPath: cofres.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8749918445585146222, guid: c3833be7deed83c4a948160b515a5845, type: 3}
-      propertyPath: cofres.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

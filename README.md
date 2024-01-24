@@ -8,7 +8,7 @@
 Shadow and Sword: Epic Duel es un juego de acción y plataformas, ambientado en un mundo medieval de fantasía. Diseñado para dos jugadores locales, el juego presenta un emocionante duelo entre un héroe y un bandido, lleno de aventuras y retos.
 
 ## Motor Gráfico
-Este juego ha sido desarrollado utilizando Unity, un motor gráfico potente y versátil conocido por su capacidad para crear experiencias de juego envolventes. Unity nos permite integrar gráficos detallados, animaciones fluidas y físicas complejas, lo que contribuye a la rica atmósfera y jugabilidad dinámica de Shadow and Sword: Epic Duel.
+Este juego ha sido desarrollado utilizando Unity(v2022.3.12f1), un motor gráfico potente y versátil conocido por su capacidad para crear experiencias de juego envolventes. Unity nos permite integrar gráficos detallados, animaciones fluidas y físicas complejas, lo que contribuye a la rica atmósfera y jugabilidad dinámica de Shadow and Sword: Epic Duel.
 
 ## Estado Actual del Juego
 El juego actualmente está en desarrollo.

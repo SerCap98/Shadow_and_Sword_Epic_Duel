@@ -13,13 +13,9 @@ El juego actualmente está en desarrollo.
 - **Objetivo**: El héroe busca un artefacto mágico mientras el bandido intenta detenerlo.
 
 ## Requisitos del Sistema
-- Plataforma: Windows
+- **Plataforma**: Windows
 - **Gráficos**: Compatible con DirectX 11
-- Edad Recomendada: 12 años en adelante
-
-## Desarrolladores
-- Sergio Capon
-- Ashly Colmenares
+- **Edad Recomendada**: 12 años en adelante
 
 ## Planes Futuros
 - **Nuevos Niveles**: Trabajamos en la creación de nuevos mapas y desafíos.

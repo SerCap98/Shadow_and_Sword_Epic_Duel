@@ -14,8 +14,18 @@ El juego actualmente está en desarrollo.
 
 ## Requisitos del Sistema
 - Plataforma: Windows
+- **Gráficos**: Compatible con DirectX 11
 - Edad Recomendada: 12 años en adelante
 
+## Desarrolladores
+- Sergio Capon
+- Ashly Colmenares
+
+## Planes Futuros
+- **Nuevos Niveles**: Trabajamos en la creación de nuevos mapas y desafíos.
+- **Personajes Adicionales**: Explorando la posibilidad de añadir más héroes y villanos.
+- **Modo Multijugador Online**: Exploraremos la integración de un modo multijugador online.
+  
 ## Desarrolladores
 - Sergio Capon
 - Ashly Colmenares

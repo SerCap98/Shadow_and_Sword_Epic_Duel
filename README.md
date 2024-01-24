@@ -37,6 +37,6 @@ El juego actualmente está en desarrollo.
 ## Galería de Imágenes
 Echa un vistazo a algunas capturas de pantalla de Shadow and Sword: Epic Duel para tener una idea de la experiencia de juego:
 
-![Descripción de la Imagen 1](https://drive.google.com/file/d/15UDEFCy1JfR3xlr3BVWJ3MhlrkqSmEqN/view?usp=sharing)
+![Descripción de la Imagen 1](Assets/Pictures/logo2.png)
 ![Descripción de la Imagen 2](url_de_la_imagen_2)
 ![Descripción de la Imagen 3](url_de_la_imagen_3)

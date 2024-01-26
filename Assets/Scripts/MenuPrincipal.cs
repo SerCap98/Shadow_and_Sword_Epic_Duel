@@ -12,7 +12,6 @@ public class MenuPrincipal : MonoBehaviour
 
     public void Salir()
     {
-        Debug.Log("Saliendo...");
-        Application.Quit();
+        SceneManager.LoadScene("Credits");
     }
 }

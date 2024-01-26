@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Prefabs/Scenes/Bosque.unity
     guid: 2db0621950fb95d4dbfe433bfcd9da71
+  - enabled: 1
+    path: Assets/Prefabs/Scenes/Credits.unity
+    guid: 115b1221544f6ef47a00e070aa19cb2f
   m_configObjects: {}

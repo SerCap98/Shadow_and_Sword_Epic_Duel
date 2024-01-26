@@ -68,8 +68,7 @@ public void Previous()
     
     public void Salir()
     {
-        Debug.Log("Saliendo...");
-        Application.Quit();
+        SceneManager.LoadScene("Credits");
     }
 
 }

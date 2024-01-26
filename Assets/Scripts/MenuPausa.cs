@@ -49,8 +49,7 @@ public class MenuPausa : MonoBehaviour
 
     public void Salir()
     {
-        Debug.Log("Saliendo...");
-        Application.Quit();
+        SceneManager.LoadScene("Credits");
     }
 
 }
